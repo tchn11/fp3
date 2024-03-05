@@ -31,4 +31,14 @@
 		       (lisp-unit:assert-equal (generate_answer rand)
 			   							(main (generate_line rand) (range 6 1 0) t))))
 
+(lisp-unit:define-test x_y_line_line
+				(let ((rand (random 10)))
+		       (lisp-unit:assert-equal (list nil (list rand rand))
+			   							(main '((1 1) (2 2) (3 3)) (range 1 1 rand) t))))
+
+(lisp-unit:define-test x_y_line_deg
+				(let ((rand (random 10)))
+		       (lisp-unit:assert-equal (list nil (list rand (float rand)))
+			   							(main '((1 1) (2 2) (3 3)) (range 1 1 rand) nil))))
+
 (lisp-unit:run-tests)
