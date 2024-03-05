@@ -9,7 +9,7 @@ jobs:
         run: |
           sudo apt install emacs 
           bash ./lisp-format src/generator.lisp > generator_form.lisp
-          bash ./lisp-format src/input.lisp > input_form.lisp
+          bash ./lisp-format src/inputs.lisp > inputs_form.lisp
           bash ./lisp-format src/main.lisp > main_form.lisp
           bash ./lisp-format src/methods.lisp > methods_form.lisp
           bash ./lisp-format src/run.lisp > run_form.lisp
@@ -17,7 +17,7 @@ jobs:
       - name: Compare with format
         run: |
           diff src/generator.lisp generator_form.lisp
-          diff src/input.lisp input_form.lisp
+          diff src/inputs.lisp inputs_form.lisp
           diff src/main.lisp main_form.lisp
           diff src/methods.lisp methods_form.lisp
           diff src/run.lisp run_form.lisp
