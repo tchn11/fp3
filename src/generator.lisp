@@ -13,8 +13,8 @@
         (val (- init st)))
     (make-lazy-seq
      (lambda ()
-        (incf iter)
-        (incf val st)
-        (if (< iter n) 
+       (incf iter)
+       (incf val st)
+       (if (< iter n)
            (values val nil)
-           (values nil t))))))
+	 (values nil t))))))
