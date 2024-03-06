@@ -2,7 +2,7 @@
   ((next-fn :accessor seq-next-fn
             :initarg :next-fn)))
 
-(defun make-lazy-seq(&optional next-fn)
+(defun make-lazy-seq(next-fn)
   (make-instance 'lazy-seq :next-fn next-fn))
 
 (defun next(seq)

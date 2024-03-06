@@ -1,7 +1,7 @@
-(defun get_x (point)
+(defun get-x (point)
   (car point))
 
-(defun get_y (point)
+(defun get-y (point)
   (cadr point))
 
 
@@ -25,13 +25,13 @@
 	  (let ((max-difference 0.0))
             (loop for i below n do
 		  (when (> (abs (- (aref vector-old-ans i) (aref vector-ans i))) max-difference)
-		    (setf max-difference (abs (- (aref vector-old-ans i) (aref vector-ans i)))))
-		  (setf difference max-difference)))
+		    (setq max-difference (abs (- (aref vector-old-ans i) (aref vector-ans i)))))
+		  (setq difference max-difference)))
 
 	  (loop for i below n do
 		(setf (aref vector-old-ans i) (aref vector-ans i)))
 
-	  (setf num (+ num 1))
+	  (setq num (+ num 1))
 	  (assert (< num max-iterations)))
 
     vector-ans))
