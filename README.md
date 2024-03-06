@@ -77,7 +77,85 @@ o o o o o o . . x x x
 
 ### Алгоритм
 
+Организация приложения:
+
 ![alt text](img/fp3.drawio.png)
+
+### Пример
+
+Получение точек из консоли, линейный метод:
+
+```text
+Input from files? (y/n)
+n
+Enter number of points:
+3
+1 1
+2 2
+3 3
+Line method? (y/n)
+y
+
+0  0
+1  1
+2  2
+3  3
+4  4
+5  5
+6  6
+7  7
+```
+
+Получение точек из файла, линейный метод:
+
+```text
+Input from files? (y/n)
+y
+Enter filename:
+test.txt
+Line method? (y/n)
+y
+
+0  1
+1  1
+2  1
+3  3
+4  5
+5  7
+6  9
+7  11
+```
+
+Файл test.txt
+
+```text
+1 1
+2 1
+3 3
+```
+
+Получение точек из консоли, степенной метод:
+
+```text
+Input from files? (y/n)
+n
+Enter number of points:
+3
+1 1
+2 1
+3 2
+Line method? (y/n)
+n
+
+0  0.0
+1  0.90015256
+2  1.3298088
+3  1.6708006
+4  1.9645466
+5  2.2275143
+6  2.4682987
+7  2.6920755
+```
 
 ## Вывод
 
