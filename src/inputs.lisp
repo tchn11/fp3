@@ -13,28 +13,18 @@
 	collect (subseq string i j)
 	while j))
 
-(defun read-from-files (filename)
-  (let ((points (list nil))
-        (stream (open filename
+(defun open-file (filename)
+  (open filename
 		      :direction :input
-		      :if-does-not-exist :error)))
-    (let ((input-string (read-line stream nil :eof)))
-      (loop while (not (string= input-string "EOF")) do
-            (push (split-by-one-space (string-trim '(#\Newline #\Return) input-string)) (cdr (last points)))
-            (setq input-string (read-line stream nil :eof))))
-    (close stream)
-    (stable-sort
-     (map 'list #'(lambda (x)
-		    (list (parse-integer (car x)) (parse-integer (cadr x))))
-	  (remove-if-not (lambda (x) x) points))
-     #'(lambda (x y) (< (car x) (car y))))))
+		      :if-does-not-exist :error))
 
-(defun read-from-input (n)
-  (let ((points (list nil)))
-    (dotimes (i n)
-      (push (split-by-one-space (read-line-cons)) (cdr (last points))))
-    (stable-sort
-     (map 'list #'(lambda (x)
-		    (list (parse-integer (car x)) (parse-integer (cadr x))))
-	  (remove-if-not (lambda (x) x) points))
-     #'(lambda (x y) (< (car x) (car y))))))
+(defun read-from-files (stream)
+  (let ((input-string (read-line stream nil :eof)))
+      (if (string= input-string "EOF")
+        nil
+        (map 'list #'(lambda (x) (parse-integer x))
+          (split-by-one-space (string-trim '(#\Newline #\Return) input-string))))))
+
+(defun read-from-input () 
+  (map 'list #'(lambda (x) (parse-integer x))
+          (split-by-one-space (string-trim '(#\Newline #\Return) (read-line-cons)))))

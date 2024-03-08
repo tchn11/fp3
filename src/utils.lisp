@@ -19,7 +19,7 @@
 		(let ((sum 0))
 		  (loop for j below n do
 			(when (not (= i j))
-			  (setq sum (+ sum (* (/ (aref array i j) (aref array i i)) (aref vector-ans j))))))
+			  (incf sum (* (/ (aref array i j) (aref array i i)) (aref vector-ans j)))))
 		  (setf (aref vector-ans i) (- (/ (aref array i n) (aref array i i)) sum))))
 
 	  (let ((max-difference 0.0))
@@ -31,7 +31,7 @@
 	  (loop for i below n do
 		(setf (aref vector-old-ans i) (aref vector-ans i)))
 
-	  (setq num (+ num 1))
+	  (incf num)
 	  (assert (< num max-iterations)))
 
     vector-ans))
