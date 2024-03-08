@@ -8,14 +8,11 @@
 
 
 (defun degree (points x)
-  (let ((n 0)
-	(system-array (make-array '(2 3) :initial-element 1.0))
+  (let ((n (length points))
 	(summ-x 0)
 	(summ-x-sqd 0)
 	(summ-y 0)
 	(summ-x-y 0))
-
-    (setq n (length points))
 
     ;; Суммируем логарифмы x и y
     (dotimes (i n)
@@ -31,12 +28,8 @@
       (incf summ-x-y (* (log (get-x (nth i points))) (log (get-y (nth i points))))))
 
     ;; Вычисляем систему уравнений
-    (setf (aref system-array 0 0) summ-x-sqd)
-    (setf (aref system-array 0 1) summ-x)
-    (setf (aref system-array 0 2) summ-x-y)
-    (setf (aref system-array 1 0) summ-x)
-    (setf (aref system-array 1 1) n)
-    (setf (aref system-array 1 2) summ-y)
-    (let ((ans (calc-system system-array 2)))
+    (let ((system-array (make-array '(2 3)
+          :initial-contents (list (list summ-x-sqd summ-x summ-x-y) (list summ-x n summ-y)))))
+          (let ((ans (calc-system system-array 2)))
 
-      (* (exp (aref ans 1)) (expt x (aref ans 0))))))
+      (* (exp (aref ans 1)) (expt x (aref ans 0)))))))
