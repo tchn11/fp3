@@ -15,16 +15,16 @@
 
 (defun open-file (filename)
   (open filename
-		      :direction :input
-		      :if-does-not-exist :error))
+	:direction :input
+	:if-does-not-exist :error))
 
 (defun read-from-files (stream)
   (let ((input-string (read-line stream nil :eof)))
-      (if (string= input-string "EOF")
+    (if (string= input-string "EOF")
         nil
-        (map 'list #'(lambda (x) (parse-integer x))
-          (split-by-one-space (string-trim '(#\Newline #\Return) input-string))))))
+      (map 'list #'(lambda (x) (parse-integer x))
+	   (split-by-one-space (string-trim '(#\Newline #\Return) input-string))))))
 
-(defun read-from-input () 
+(defun read-from-input ()
   (map 'list #'(lambda (x) (parse-integer x))
-          (split-by-one-space (string-trim '(#\Newline #\Return) (read-line-cons)))))
+       (split-by-one-space (string-trim '(#\Newline #\Return) (read-line-cons)))))
