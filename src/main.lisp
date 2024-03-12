@@ -34,4 +34,4 @@
 ))
 
 (defun run-main ()
-	(main (open-file (ask "Enter filename:")) (range 8 1 0) (string= (ask "Line method? (y/n)") "y")))
+  (main (open-file (ask "Enter filename:")) (range 8 1 0) (string= (ask "Line method? (y/n)") "y")))

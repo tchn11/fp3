@@ -29,7 +29,7 @@
 
     ;; Вычисляем систему уравнений
     (let ((system-array (make-array '(2 3)
-          :initial-contents (list (list summ-x-sqd summ-x summ-x-y) (list summ-x n summ-y)))))
-          (let ((ans (calc-system system-array 2)))
+				    :initial-contents (list (list summ-x-sqd summ-x summ-x-y) (list summ-x n summ-y)))))
+      (let ((ans (calc-system system-array 2)))
 
-      (* (exp (aref ans 1)) (expt x (aref ans 0)))))))
+	(* (exp (aref ans 1)) (expt x (aref ans 0)))))))
